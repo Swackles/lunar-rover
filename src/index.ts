@@ -3,13 +3,15 @@ import message from "./util/events/message";
 import ready from "./util/events/ready";
 
 // config
-import config from "./../config/application"
+import config from "./config/application"
 
 // Sentry
 import * as Sentry from "@sentry/node"
 import * as Tracing from "@sentry/tracing"
 
 Sentry.init(config.sentry);
+
+console.log(config)
 
 const Discord = require('discord.js')
 const client = new Discord.Client();

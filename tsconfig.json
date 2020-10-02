@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "types": [ "node" ],
     "outDir": "./built",
     "allowJs": false,
     "target": "es5",
-    "lib": [ "es2015" ]
+    "lib": [ "es2015", "dom" ]
   },
   "include": [
     "./src/**/*",
