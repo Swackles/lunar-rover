@@ -4,8 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "build": "tsc",
     "dev": "nodemon src/index.js",
-    "test": "mocha -r ts-node/register tests/**/*.test.ts",
+    "test": "mocha --exit -r ts-node/register tests/**/*.test.ts",
     "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
   },
   "author": "Swackles",
