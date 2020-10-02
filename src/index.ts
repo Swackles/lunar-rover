@@ -1,25 +1,28 @@
-import controller from "./util/controller";
+// controllers
+import message from "./util/events/message";
+import ready from "./util/events/ready";
 
-const Discord = require('discord.js');
+// config
+import config from "./../config/application"
+
+// Sentry
+import * as Sentry from "@sentry/node"
+import * as Tracing from "@sentry/tracing"
+
+Sentry.init(config.sentry);
+
+const Discord = require('discord.js')
 const client = new Discord.Client();
 
-const serverID = 
-const channelID = 
-const token = 
+try {  
+  // Controllers
+  client.on('ready', ready );
+  client.on('message', message);
 
-client.on('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  client.login(config.tokens.discord);
+} catch(e) {
+  if (config.env == 'production') Sentry.captureException(e);
+  else throw e
+}
 
-  let channel = await client.channels.fetch(channelID)
-
-  let messages = await channel.messages.fetch()
-  
-  messages.each(msg => {
-    console.log(msg.content)
-  })
-});
-
-client.on('message', controller);
-
-
-client.login(token);
+export default client
