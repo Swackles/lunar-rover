@@ -1,8 +1,9 @@
 import { expect } from "chai";
+import { describe, it } from 'mocha'
+
 import rewire = require("rewire");
 import Participant from "../../../src/util/Ikariam/participant";
 import parseInformation from "./../../../src/util/battleParser/parseInformation"
-
 
 const battleReport = rewire("./../../../src/util/battleParser/parseInformation")
 const parseParticipant = battleReport.__get__('parseParticipant')

@@ -1,9 +1,9 @@
 import { expect } from "chai";
+import { describe, it } from 'mocha'
+
 import { Client, Collection, Guild, GuildChannel, Message, TextChannel } from 'discord.js'
 import rewire  = require("rewire");
 import interview from "./../../src/commands/interview";
-
-import { describe, it } from 'mocha'
 
 const interviewRewire = rewire("./../../src/commands/interview")
 const findAvailableID = interviewRewire.__get__('findAvailableID')

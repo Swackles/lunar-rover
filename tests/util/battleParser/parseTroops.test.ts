@@ -1,4 +1,6 @@
 import { expect } from "chai";
+import { describe, it } from 'mocha'
+
 import rewire = require("rewire");
 import parseTroops from "../../../src/util/battleParser/parseTroops";
 
