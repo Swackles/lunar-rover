@@ -1,4 +1,6 @@
 import { expect } from "chai";
+import { describe, it } from 'mocha'
+
 import BattleReport from "./../../../src/util/Ikariam/battleReport";
 
 describe('Constructor', () => {
