@@ -3,6 +3,8 @@ import { Client, Collection, Guild, GuildChannel, Message, TextChannel } from 'd
 import rewire  = require("rewire");
 import interview from "./../../src/commands/interview";
 
+import { describe, it } from 'mocha'
+
 const interviewRewire = rewire("./../../src/commands/interview")
 const findAvailableID = interviewRewire.__get__('findAvailableID')
 const guild = new Guild(new Client(), {})
