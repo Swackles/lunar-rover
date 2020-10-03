@@ -9,6 +9,9 @@ import config from "./config/application"
 import * as Sentry from "@sentry/node"
 import * as Tracing from "@sentry/tracing"
 
+// Express
+import * as express from "express" 
+
 Sentry.init(config.sentry);
 
 const Discord = require('discord.js')
@@ -24,5 +27,10 @@ try {
   if (config.env == 'production') Sentry.captureException(e);
   else throw e
 }
+
+// Kubernetes health
+const app = express()
+app.get('/', (req, res) => { res.send(200) })
+app.listen(80)
 
 export default client
