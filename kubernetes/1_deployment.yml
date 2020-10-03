@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: lunar-rover
+  name: lunar-rover
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lunar-rover
+  template:
+    metadata:
+      labels:
+        app: lunar-rover
+    spec:
+      containers:
+      - name: lunar-rover
+        image: swackles/lunar-rover:latest
+        ports:
+        - containerPort: 80
+    envFrom:
+      - secretRef:
+        name: lunar-rover
