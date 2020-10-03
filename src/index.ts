@@ -11,8 +11,6 @@ import * as Tracing from "@sentry/tracing"
 
 Sentry.init(config.sentry);
 
-console.log(config)
-
 const Discord = require('discord.js')
 const client = new Discord.Client();
 
