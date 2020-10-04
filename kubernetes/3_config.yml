@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lunar-rover
+data:
+  APP_ENV: production
+  ALLOWED_ROLES: leadership,full moon

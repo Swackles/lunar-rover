@@ -18,6 +18,8 @@ spec:
         image: swackles/lunar-rover:latest
         ports:
         - containerPort: 80
-    envFrom:
-      - secretRef:
-        name: lunar-rover
+        envFrom:
+          - configMapRef:
+              name: lunar-rover
+          - secretRef:
+              name: lunar-rover
