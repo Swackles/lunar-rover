@@ -12,7 +12,7 @@ import * as Tracing from "@sentry/tracing"
 // Express
 import * as express from "express" 
 
-Sentry.init(config.sentry);
+if (config.env == 'production') Sentry.init(config.sentry);
 
 const Discord = require('discord.js')
 const client = new Discord.Client();
