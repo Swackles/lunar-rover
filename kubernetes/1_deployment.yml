@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: lunar-rover
+  namespace: lunar-killers
   name: lunar-rover
 spec:
   replicas: 1
@@ -20,6 +20,6 @@ spec:
         - containerPort: 80
         envFrom:
           - configMapRef:
-              name: lunar-rover
+              name: lunar-rover-config
           - secretRef:
-              name: lunar-rover
+              name: lunar-rover-secret

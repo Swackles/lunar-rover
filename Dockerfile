@@ -16,8 +16,6 @@ FROM alpine:3
 RUN apk add nodejs bash --no-cache
 WORKDIR /lunar-rover
 
-RUN env
-
 COPY --from=build /lunar-rover/node_modules /lunar-rover/node_modules
 COPY --from=build /lunar-rover/built /lunar-rover/
 
