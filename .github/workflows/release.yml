@@ -25,8 +25,8 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_TOKEN }}
 
-      - name: Log in to DigitalOcean Container Registry with short-lived credentials
-        run: doctl registry login --expiry-seconds 600
+      - name: Log in to DigitalOcean Container Registry
+        run: doctl registry login
 
       - name: Update deployment file
         run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|hub.docker.com/repository/docker/swackles/lunar-rover:latest|' $GITHUB_WORKSPACE/config/deployment.yml
