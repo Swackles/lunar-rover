@@ -5,7 +5,23 @@ on:
       - v*
 
 jobs:
-  deploy:    
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checking repository out
+        uses: actions/checkout@v2
+
+      - name: install nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: install dependencies
+        run: npm install
+
+      - name: run tests
+        run: npm run test
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: checking repository out
