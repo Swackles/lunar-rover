@@ -3,6 +3,7 @@ import config from '../config/application'
 
 // Commands
 import interview from '../commands/interview'
+import test from '../commands/test'
 
 /**
  * Controller for the on message event
@@ -18,8 +19,12 @@ async function controller(message: Message) {
 
   switch(args.shift().replace('!', '')) {
     case 'interview':
-    case 'i':
+    case 'i':      
       interview(message,  args)
+      break;
+    case 'test':
+      if (config.env == 'development') test(message, args)
+      break;
   }
 }
 

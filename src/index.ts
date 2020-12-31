@@ -1,6 +1,7 @@
 // controllers
 import message from "./events/message";
 import ready from "./events/ready";
+import guildMemberAdd from "./events/guildMemberAdd";
 
 // config
 import config from "./config/application"
@@ -21,6 +22,7 @@ try {
   // Controllers
   client.on('ready', ready );
   client.on('message', message);
+  client.on('guildMemberAdd', guildMemberAdd);
 
   client.login(config.tokens.discord);
 } catch(e) {
