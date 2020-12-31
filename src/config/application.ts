@@ -1,5 +1,5 @@
 const config = {
-  version: '1.1.0',
+  version: '1.1.1',
   env: process.env.NODE_ENV || 'development',
   tokens: {
     discord: process.env.TOKEN_DISCORD,
