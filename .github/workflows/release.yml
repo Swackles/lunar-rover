@@ -1,5 +1,6 @@
 name: Docker Image CI
 on:
+  workflow_dispatch
   create:
     tags:
       - v*
@@ -22,6 +23,7 @@ jobs:
       - name: run tests
         run: npm run test
   deploy:
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - name: checking repository out
