@@ -1,5 +1,5 @@
-import config from '../../config/application';
-import client from './../../index'
+import config from '../config/application';
+import client from './../index'
 
 /**
  * Controller for client ready event

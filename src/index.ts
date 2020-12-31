@@ -1,6 +1,6 @@
 // controllers
-import message from "./util/events/message";
-import ready from "./util/events/ready";
+import message from "./events/message";
+import ready from "./events/ready";
 
 // config
 import config from "./config/application"

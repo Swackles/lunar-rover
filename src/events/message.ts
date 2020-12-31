@@ -1,8 +1,8 @@
 import { GuildMember, Message } from 'discord.js'
-import config from '../../config/application'
+import config from '../config/application'
 
 // Commands
-import interview from '../../commands/interview'
+import interview from '../commands/interview'
 
 /**
  * Controller for the on message event
