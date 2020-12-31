@@ -43,7 +43,7 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_TOKEN }}
 
       - name: Save DigitalOcean kubeconfig
-        run: doctl kubernetes cluster kubeconfig save lunar-rover
+        run: doctl kubernetes cluster kubeconfig save development
       
       - name: Deply config map
         run: kubectl apply -f $GITHUB_WORKSPACE/kubernetes/3_config.yml
