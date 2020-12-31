@@ -42,12 +42,6 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_TOKEN }}
 
-      - name: Log in to DigitalOcean Container Registry
-        run: doctl registry login
-
-      - name: Update deployment file
-        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|hub.docker.com/repository/docker/swackles/lunar-rover:latest|' $GITHUB_WORKSPACE/kubernetes/1_deployment.yml
-
       - name: Save DigitalOcean kubeconfig
         run: doctl kubernetes cluster kubeconfig save lunar-rover
       
@@ -58,4 +52,4 @@ jobs:
         run: kubectl apply -f $GITHUB_WORKSPACE/kubernetes/1_deployment.yml
 
       - name: Verify deployment
-        run: kubectl rollout status deployment.apps/lunar-rover
+        run: kubectl rollout status deployment lunar-rover --namespace=lunar-killers
