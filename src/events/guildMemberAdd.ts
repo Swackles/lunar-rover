@@ -1,4 +1,5 @@
-import { GuildChannel, GuildMember, PermissionOverwrites } from "discord.js";
+import { GuildChannel, GuildMember, MessageEmbed, PermissionOverwrites, TextChannel } from "discord.js";
+import config from "../config/application";
 
 /**
  * Finds the first available id for interview
@@ -16,7 +17,18 @@ function findAvailableID(channels: GuildChannel[]): number {
   return i
 }
 
-export default async (member: GuildMember) => {
+function sendWelcomeMessage(member: GuildMember, interview: TextChannel): void {
+  const embed = new MessageEmbed()
+    .setColor(member.displayHexColor)
+    .setTitle('New member')
+    .setDescription(`<@${member.id}> joined the server and created <#${interview.id}>`)
+    .setThumbnail(member.user.displayAvatarURL());
+
+    
+  (<TextChannel>member.guild.channels.cache.get(config.channel.log)).send(embed)
+}
+
+async function main (member: GuildMember) {
   const guild = await member.guild
 
   const channels = guild.channels.cache.filter(x => x.name.includes('interview_'))
@@ -42,4 +54,8 @@ export default async (member: GuildMember) => {
   interviewChannel.overwritePermissions(interviewChannel.permissionOverwrites)
 
   interviewChannel.send(`Hello <@${member.id}>, would you start off by talking about your experience in ikariam`)
+
+  sendWelcomeMessage(member, interviewChannel)
 }
+
+export default main

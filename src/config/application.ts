@@ -6,7 +6,10 @@ const config = {
     sentry: process.env.TOKEN_SENTRY
   },
   allowedRoles: process.env.ALLOWED_ROLES || 'leadership',
-  sentry: null
+  sentry: null,
+  channel: {
+    log: process.env.LOG_CHANNEL
+  }
 }
 
 // Sentry configuration
