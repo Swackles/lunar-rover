@@ -28,20 +28,14 @@ async function controller(message: Message) {
   }
 }
 
-function memberAllowed(member: GuildMember) {
-  const admin = member.hasPermission('ADMINISTRATOR')
-  const roles = member.roles.cache.array().map(x => x.name)
+function memberAllowed(member: GuildMember): boolean {
+  const roles = member.roles.cache.array().map(x => x.id)
 
-  let role = false
-  
-  for (const allowedRole in config.allowedRoles.split(',')) {
-    if (roles.includes(allowedRole)) {
-      role = true
-      break
-    }
+  for (const allowedRole in config.allowedRoles.split(';')) {
+    if (roles.includes(allowedRole)) return true
   }
 
-  return admin || role
+  return member.hasPermission('ADMINISTRATOR')
 }
 
 export default controller
