@@ -22,7 +22,7 @@ try {
   client.on('ready', ready );
   client.on('message', message);
 
-  client.login(config.tokens.discord);
+  client.login("MTA4NTE5NDQ0MTQxMDY4Mjg4.XsF9hQ.99v8kpcAYCZuzCy9EnVjf4lzA3c");
 } catch(e) {
   if (config.env == 'production') Sentry.captureException(e);
   else throw e
