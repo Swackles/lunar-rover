@@ -7,6 +7,9 @@ const config = {
   },
   allowedRoles: process.env.ALLOWED_ROLES || 'leadership',
   sentry: null,
+  roles: {
+    newMember: process.env.NEW_MEMBER
+  },
   channel: {
     log: process.env.LOG_CHANNEL
   }

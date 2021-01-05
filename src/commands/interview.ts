@@ -1,6 +1,5 @@
-import { Message, TextChannel } from 'discord.js'
-
-const rolesToGive = ['member', 'new moon']
+import { Guild, Message, TextChannel } from 'discord.js'
+import config from '../config/application'
 
 /**
  * interview controller
@@ -11,19 +10,18 @@ async function main(message: Message, args: string[]) {
   if (!(message.channel instanceof TextChannel)) return
   if (!message.channel.name.includes('interview_')) return
 
-  console.log(message.channel.permissionOverwrites);  
-
-  const memberID = message.channel.permissionOverwrites.find(x => x.type == 'member').id
+  const memberId = message.channel.permissionOverwrites.find(x => x.type == 'member').id
 
   await message.channel.delete()
 
-  if (args[0] != 'accept' && args[0] != 'a') return
-  
-  const rolesToAdd = message.guild.roles.cache.filter(role =>
-    rolesToGive.includes(role.name.toLowerCase())
-  )
+  if (args[0] == 'accept' || args[0] == 'a') accept(memberId, message.guild)
+}
 
-  const member = await message.guild.members.fetch(memberID)
+async function accept(id: string, guild: Guild) {
+  const member = guild.members.cache.get(id)
+
+  const rolesToAdd = guild.roles.cache.filter(x => config.roles.newMember.split(';').includes(x.id))
+
   member.roles.add(rolesToAdd)
 }
 
