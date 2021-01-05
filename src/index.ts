@@ -2,6 +2,7 @@
 import message from "./events/message";
 import ready from "./events/ready";
 import guildMemberAdd from "./events/guildMemberAdd";
+import guildMemberRemove from "./events/guildMemberRemove";
 
 // config
 import config from "./config/application"
@@ -23,6 +24,7 @@ try {
   client.on('ready', ready );
   client.on('message', message);
   client.on('guildMemberAdd', guildMemberAdd);
+  client.on('guildMemberRemove', guildMemberRemove)
 
   client.login(config.tokens.discord);
 } catch(e) {
